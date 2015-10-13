@@ -1,0 +1,26 @@
+{
+  "name": "path-explorer",
+  "version": "0.0.1",
+  "description": "Library (for NodeJS) to get and set value in object using paths",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Normegil/path-explorer.git"
+  },
+  "keywords": [
+    "path",
+    "explore",
+    "get",
+    "set",
+    "object"
+  ],
+  "author": "Olivier Ory",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Normegil/path-explorer/issues"
+  },
+  "homepage": "https://github.com/Normegil/path-explorer#readme"
+}
