@@ -26,7 +26,6 @@
   "requireDotNotation"                            :  true,
   "requireLineBreakAfterVariableAssignment"       :  true,
   "requireNamedUnassignedFunctions"               :  true,
-  "requirePaddingNewLinesBeforeExport"            :  true,
   "requireSemicolons"                             :  true,
   "requireSpaceBeforeObjectValues"                :  true,
   "requireYodaConditions"                         :  true
