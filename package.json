@@ -1,6 +1,6 @@
 {
   "name": "path-explorer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Library (for NodeJS) to get and set value in object using paths",
   "main": "index.js",
   "scripts": {
