@@ -1,16 +1,15 @@
 'use strict';
 
-var assert = require('chai').assert;
+var test = require('tape');
 var pathExplorer = require('../index.js');
 
-describe('path-explorer', function() {
-  it('should require get.js for the getter', function(done) {
-    assert.equal(pathExplorer.get, require('../lib/get.js'));
-    done();
-  });
+var moduleName = 'path-explorer ';
+test(moduleName + 'should require get.js for the getter', function(assert) {
+  assert.equal(pathExplorer.get, require('../lib/get.js'));
+  assert.end();
+});
 
-  it('should require set.js for the setter', function(done) {
-    assert.equal(pathExplorer.set, require('../lib/set.js'));
-    done();
-  });
+test(moduleName + 'should require set.js for the setter', function(assert) {
+  assert.equal(pathExplorer.set, require('../lib/set.js'));
+  assert.end();
 });
