@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Normegil/path-explorer#readme",
   "devDependencies": {
     "faucet": "0.0.1",
-    "jscs": "^2.3.0",
+    "jscs": "^2.5.1",
     "jshint": "^2.8.0",
     "tape": "^4.2.2"
   },
