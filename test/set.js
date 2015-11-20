@@ -1,11 +1,11 @@
 'use strict';
 
-var test = require('tape');
-var set = require('../lib/set.js');
+let test = require('tape');
+let set = require('../lib/set.js');
 
-var moduleName = 'set() ';
+let moduleName = 'set() ';
 test(moduleName + 'should send an error if path is null', function(assert) {
-  var target = {};
+  let target = {};
   set({
     target: target,
     path: null,
@@ -18,7 +18,7 @@ test(moduleName + 'should send an error if path is null', function(assert) {
 });
 
 test(moduleName + 'should send an error if path is undefined', function(assert) {
-  var target = {};
+  let target = {};
   set({
       target: target,
       value: 'test',
@@ -30,21 +30,21 @@ test(moduleName + 'should send an error if path is undefined', function(assert) 
 });
 
 test(moduleName + 'should not send an error if target is undefined', function(assert) {
-  var target;
+  let target;
   set({
-      target: target,
-      path: '',
-      value: 'test',
-    }).then(function onSuccess(result) {
-      assert.equal(result, 'test');
-      assert.end();
-    }).catch(function onError(err) {
-      assert.fail(err);
-    });
+    target: target,
+    path: '',
+    value: 'test',
+  }).then(function onSuccess(result) {
+    assert.equal(result, 'test');
+    assert.end();
+  }).catch(function onError(err) {
+    assert.fail(err);
+  });
 });
 
 test(moduleName + 'should not send an error if target is null', function(assert) {
-  var target = null;
+  let target = null;
   set({
     target: target,
     path: '',
@@ -58,7 +58,7 @@ test(moduleName + 'should not send an error if target is null', function(assert)
 });
 
 test(moduleName + 'should set root value', function(assert) {
-  var target = {};
+  let target = {};
   set({
     target: target,
     path: '',
@@ -72,7 +72,7 @@ test(moduleName + 'should set root value', function(assert) {
 });
 
 test(moduleName + 'should set root value of undefined target', function(assert) {
-  var target;
+  let target;
   set({
     target: target,
     path: 'testField',
@@ -86,7 +86,7 @@ test(moduleName + 'should set root value of undefined target', function(assert) 
 });
 
 test(moduleName + 'should set root value of null target', function(assert) {
-  var target = null;
+  let target = null;
   set({
     target: target,
     path: 'testField',
@@ -100,7 +100,7 @@ test(moduleName + 'should set root value of null target', function(assert) {
 });
 
 test(moduleName + 'should set property value', function(assert) {
-  var target = {};
+  let target = {};
   set({
     target: target,
     path: 'testProperty',
@@ -114,7 +114,7 @@ test(moduleName + 'should set property value', function(assert) {
 });
 
 test(moduleName + 'should set property value in hierarchy', function(assert) {
-  var target = {object: {}};
+  let target = {object: {}};
   set({
     target: target,
     path: 'object.testProperty',
@@ -128,7 +128,7 @@ test(moduleName + 'should set property value in hierarchy', function(assert) {
 });
 
 test(moduleName + 'should not change other values', function(assert) {
-  var target = {
+  let target = {
     test1: 'test1',
     test2: 'test2',
   };
@@ -146,7 +146,7 @@ test(moduleName + 'should not change other values', function(assert) {
 });
 
 test(moduleName + 'should set property value in non-existing hierarchy', function(assert) {
-  var target = {};
+  let target = {};
   set({
     target: target,
     path: 'object.testProperty',
@@ -160,8 +160,8 @@ test(moduleName + 'should set property value in non-existing hierarchy', functio
 });
 
 test(moduleName + 'should set array as property value', function(assert) {
-  var target = {};
-  var value = [1, 2, 3];
+  let target = {};
+  let value = [1, 2, 3];
   set({
     target: target,
     path: 'array',
@@ -175,9 +175,9 @@ test(moduleName + 'should set array as property value', function(assert) {
 });
 
 test(moduleName + 'should set value for composed property name', function(assert) {
-  var target = {};
-  var value = 'Test';
-  var propertyName = 'Test Object';
+  let target = {};
+  let value = 'Test';
+  let propertyName = 'Test Object';
   set({
     target: target,
     path: propertyName,
@@ -191,8 +191,8 @@ test(moduleName + 'should set value for composed property name', function(assert
 });
 
 test(moduleName + 'should replace internal value of an array', function(assert) {
-  var target = {array: [1 ,2 ,3]};
-  var value = 4;
+  let target = {array: [1 ,2 ,3]};
+  let value = 4;
   set({
     target: target,
     path: 'array[1]',
@@ -206,8 +206,8 @@ test(moduleName + 'should replace internal value of an array', function(assert) 
 });
 
 test(moduleName + 'should be able to set an internal array value', function(assert) {
-  var target = {array: [1 ,2 ,3]};
-  var value = 4;
+  let target = {array: [1 ,2 ,3]};
+  let value = 4;
   set({
     target: target,
     path: 'array[1].test',
@@ -221,8 +221,8 @@ test(moduleName + 'should be able to set an internal array value', function(asse
 });
 
 test(moduleName + 'should send an error when setting an internal array value if array index doesn\'t exist', function(assert) {
-  var target = {array: [1 ,2 ,3]};
-  var value = 4;
+  let target = {array: [1 ,2 ,3]};
+  let value = 4;
   set({
     target: target,
     path: 'array[42].test',
@@ -236,8 +236,8 @@ test(moduleName + 'should send an error when setting an internal array value if 
 });
 
 test(moduleName + 'should be able to add an internal array value if no index is specified', function(assert) {
-  var target = {array: [1 ,2 ,3]};
-  var value = 4;
+  let target = {array: [1 ,2 ,3]};
+  let value = 4;
   set({
     target: target,
     path: 'array[].test',
@@ -251,8 +251,8 @@ test(moduleName + 'should be able to add an internal array value if no index is 
 });
 
 test(moduleName + 'should be able to set an internal array value if array index exist on multiple dimension array', function(assert) {
-  var target = {array: [[1, 2, 3], [21, 22, 23], [31, 32, 33]]};
-  var value = 4;
+  let target = {array: [[1, 2, 3], [21, 22, 23], [31, 32, 33]]};
+  let value = 4;
   set({
     target: target,
     path: 'array[1][2].test',
@@ -266,8 +266,8 @@ test(moduleName + 'should be able to set an internal array value if array index 
 });
 
 test(moduleName + 'should be able to replace base property with an array', function(assert) {
-  var target = {array: 'Test'};
-  var value = 4;
+  let target = {array: 'Test'};
+  let value = 4;
   set({
     target: target,
     path: 'array[1].test',
@@ -281,8 +281,8 @@ test(moduleName + 'should be able to replace base property with an array', funct
 });
 
 test(moduleName + 'should be able to set an internal array to replace actual value', function(assert) {
-  var target = {array: [1, 2, 3]};
-  var value = 4;
+  let target = {array: [1, 2, 3]};
+  let value = 4;
   set({
     target: target,
     path: 'array[1][2].test',
@@ -292,5 +292,37 @@ test(moduleName + 'should be able to set an internal array to replace actual val
     assert.end();
   }).catch(function onError(err) {
     assert.fail(err);
+  });
+});
+
+test(moduleName + 'works with deep object', function(assert) {
+  let target = {};
+  let value = 'testValue';
+  set({
+    target: target,
+    path: 'test.test1.test2.test3',
+    value: value,
+  }).then(function onSuccess(result) {
+    assert.equal(value, result.test.test1.test2.test3);
+    assert.end();
+  }).catch(function onError(err) {
+    assert.fail(err);
+    assert.end();
+  });
+});
+
+test(moduleName + 'works with deep object containing array', function(assert) {
+  let target = {};
+  let value = 'testValue';
+  set({
+    target: target,
+    path: 'test.test1[0][1].test2.test3',
+    value: value,
+  }).then(function onSuccess(result) {
+    assert.equal(value, result.test.test1[0][1].test2.test3);
+    assert.end();
+  }).catch(function onError(err) {
+    assert.fail(err);
+    assert.end();
   });
 });
