@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var get = require('../lib/get.js');
+var get = require('../').get;
 
 var moduleName = 'get() ';
 test(moduleName + 'should get root value', function(assert) {

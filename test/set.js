@@ -1,7 +1,7 @@
 'use strict';
 
 let test = require('tape');
-let set = require('../lib/set.js');
+let set = require('../').set;
 
 let moduleName = 'set() ';
 test(moduleName + 'should send an error if path is null', function(assert) {
@@ -12,6 +12,7 @@ test(moduleName + 'should send an error if path is null', function(assert) {
     value: 'test',
   }).then(function onSuccess() {
     assert.fail(new Error('didn \'t send an error as expected'));
+    assert.end();
   }).catch(function onError() {
     assert.end();
   });
@@ -24,6 +25,7 @@ test(moduleName + 'should send an error if path is undefined', function(assert) 
       value: 'test',
     }).then(function onSuccess() {
       assert.fail(new Error('didn \'t send an error as expected'));
+      assert.end();
     }).catch(function onError() {
       assert.end();
     });
@@ -39,7 +41,7 @@ test(moduleName + 'should not send an error if target is undefined', function(as
     assert.equal(result, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -53,7 +55,7 @@ test(moduleName + 'should not send an error if target is null', function(assert)
     assert.equal(result, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -67,7 +69,7 @@ test(moduleName + 'should set root value', function(assert) {
     assert.equal(result, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -81,7 +83,7 @@ test(moduleName + 'should set root value of undefined target', function(assert) 
     assert.equal(result.testField, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -95,7 +97,7 @@ test(moduleName + 'should set root value of null target', function(assert) {
     assert.equal(result.testField, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -109,7 +111,7 @@ test(moduleName + 'should set property value', function(assert) {
     assert.equal(target.testProperty, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -123,7 +125,7 @@ test(moduleName + 'should set property value in hierarchy', function(assert) {
     assert.equal(target.object.testProperty, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -141,7 +143,7 @@ test(moduleName + 'should not change other values', function(assert) {
     assert.equal(target.test2, 'test2');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -155,7 +157,7 @@ test(moduleName + 'should set property value in non-existing hierarchy', functio
     assert.equal(target.object.testProperty, 'test');
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -170,7 +172,7 @@ test(moduleName + 'should set array as property value', function(assert) {
     assert.equal(target.array, value);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -186,7 +188,7 @@ test(moduleName + 'should set value for composed property name', function(assert
     assert.equal(target[propertyName], value);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -201,7 +203,7 @@ test(moduleName + 'should replace internal value of an array', function(assert) 
     assert.equal(target.array[1], value);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -216,7 +218,7 @@ test(moduleName + 'should be able to set an internal array value', function(asse
     assert.equal(target.array[1].test, value);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -231,7 +233,7 @@ test(moduleName + 'should send an error when setting an internal array value if 
     assert.equal(value, target.array[42].test);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -247,6 +249,7 @@ test(moduleName + 'should be able to add an internal array value if no index is 
     assert.end();
   }).catch(function onError(err) {
     assert.fail(err);
+    assert.end();
   });
 });
 
@@ -261,7 +264,7 @@ test(moduleName + 'should be able to set an internal array value if array index 
     assert.equal(target.array[1][2].test, value);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -276,7 +279,7 @@ test(moduleName + 'should be able to replace base property with an array', funct
     assert.equal(value, target.array[1].test);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -291,7 +294,7 @@ test(moduleName + 'should be able to set an internal array to replace actual val
     assert.equal(value, target.array[1][2].test);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
+    assert.end(err);
   });
 });
 
@@ -306,8 +309,7 @@ test(moduleName + 'works with deep object', function(assert) {
     assert.equal(value, result.test.test1.test2.test3);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
-    assert.end();
+    assert.end(err);
   });
 });
 
@@ -322,7 +324,6 @@ test(moduleName + 'works with deep object containing array', function(assert) {
     assert.equal(value, result.test.test1[0][1].test2.test3);
     assert.end();
   }).catch(function onError(err) {
-    assert.fail(err);
-    assert.end();
+    assert.end(err);
   });
 });
